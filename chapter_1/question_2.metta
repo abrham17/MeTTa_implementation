@@ -1,0 +1,10 @@
+(= (member_check $element ())
+   ("There is no such element in the list:" $element)
+)
+
+(= (member_check $element (:: $x $xs))
+   (if (== $element $x)
+       ("There is an element with value in the list:" $element)
+       (member_check $element $xs)
+   ))
+!(member_check NikeStussy (:: NikeStussy (:: Hp_Laptop (:: bluetooth ()))))

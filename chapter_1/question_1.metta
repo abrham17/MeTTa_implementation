@@ -48,4 +48,5 @@
 
 
 !(Check_Price_Of_Product NikeStussy)
+!(Check_Quantity_Of_Product NikeStussy)
 !(customer_order NikeStussy 4)
