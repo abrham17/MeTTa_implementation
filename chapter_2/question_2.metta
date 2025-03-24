@@ -1,13 +1,13 @@
-(= (member_check $element ())
-   ("There is no such element in the list:" $element)
-)
-
-(= (member_check $element (:: $x $xs))
-   (if (== $element $x)
-       ("There is an element with value in the list:" $element)
-       (member_check $element $xs)
-   ))
-
-(= (task) (:: 8 (:: 3 (:: 10 (:: 17 ())))))
-
-!(member_check 8 (task))
+(= (member_check $list $ele) 
+(if (== $list ()) (False)
+    (let* 
+    (
+    ($cur (car-atom $list))
+    ($list1 (cdr-atom $list))
+    ;(println! $list1)
+    )
+    (if (== $cur $ele) (True) (member_check $list1 $ele))
+    )
+))
+;!(cdr-atom (1 2 3))
+!(member_check (1 2 3) 9)

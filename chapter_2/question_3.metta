@@ -1,7 +1,7 @@
 
-(= unique (superpose ($list))
+(= unique-atom ($list)
     $list
 )
 
 
-!(unique (superpose (a b c d d)))
+!(unique-atom (a b c d d))
