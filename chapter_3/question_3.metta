@@ -6,3 +6,4 @@
 ;second move predicates and again demonstrate how the tree is pruned.
 ;Finally, put two cuts within the path3 predicate and show how this
 ;prunes the search.
+
