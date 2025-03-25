@@ -75,12 +75,3 @@
 
 
 
-
-
-
-(= (visit $X $Y)
-  (setq visited_pos (union-atom visited_pos (($X $Y))))
-)
-(= (unvisit $X $Y)
-  (setq visited_pos (setdiff-atom visited_pos (($X $Y))))
-)
