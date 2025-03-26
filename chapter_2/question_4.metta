@@ -12,19 +12,17 @@
 )
 !(length_list (:: 2(:: 3(:: 1 ()))))
 
-; the second program
+; =the second program
 ;Write a program to count the atoms in a list(count the elements within any sublist).
 
 (= (length_listb ()) 0 )
 (= (length_listb $list)
     (let*
-    (   
+    (
         ($head  (car-atom $list))
-        (p)
         ($list1 (cdr-atom $list))
     )
         (+ (length_listb $head) (length_listb $list1))
     )
 ) 
-!(car-atom (1 2))
 !(length_listb ((1 2) 3))

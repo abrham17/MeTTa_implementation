@@ -4,3 +4,4 @@
 ;subclasses, and properties of the class and its subclasses that are not
 ;inherited by instances (class properties). Discuss the benefits, uses, and
 ;problems with this distinction.
+
