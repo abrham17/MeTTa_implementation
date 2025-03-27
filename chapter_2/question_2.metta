@@ -1,12 +1,12 @@
 (= (member_check $list $ele) 
-(if (== $list ()) (False)
+(if (== $list ()) False
     (let* 
     (
     ($cur (car-atom $list))
     ($list1 (cdr-atom $list))
     ;(println! $list1)
     )
-    (if (== $cur $ele) (True) (member_check $list1 $ele))
+    (if (== $cur $ele) True (member_check $list1 $ele))
     )
 ))
 ;!(cdr-atom (1 2 3))
