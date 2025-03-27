@@ -4,7 +4,6 @@
     (
     ($cur (car-atom $list))
     ($list1 (cdr-atom $list))
-    ;(println! $list1)
     )
     (if (== $cur $ele) True (member_check $list1 $ele))
     )
