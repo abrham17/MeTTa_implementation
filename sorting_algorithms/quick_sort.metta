@@ -1,62 +1,39 @@
-(= (split-list $list $index $accum)
-   (if (> $index 0)
-      (let*(
-         ($head (car-atom $list))
-         ($tail (cdr-atom $list))
-         ($newAccum (union-atom $accum ($head)))
+(= (concatenate $list1 $list2)
+   (if (== (size-atom $list1) 0)
+       $list2
+       (let* (($head (car-atom $list1))
+              ($tail (cdr-atom $list1))
+              ($rest (concatenate $tail $list2)))
+             (cons-atom $head $rest))))
 
+(= (less $list $pivot $acc)
+   (if (== (size-atom $list) 0)
+       $acc
+       (let* (($head (car-atom $list))
+              ($tail (cdr-atom $list)))
+             (if (< $head $pivot)
+                 (less $tail $pivot (cons-atom $head $acc))
+                 (less $tail $pivot $acc)))))
 
-      )
-         (split-list $tail (- $index 1) $newAccum)
-      )
-      ($accum $list)
-   )
-)
-(= (merge $lst $acc)
-   (let*
-      (
-         ($x (index-atom $lst 0))
-         ($y (index-atom $lst 1))
-      )
-      (if (< $x $y)
-         (union-atom ($x) $acc)
-      )
-      ($acc $y)
-   )
-)
-!(merge (4) (3) ())
-(= (merge-sort $lst $acc)
-   (if (< (size-atom $lst) 2)
-       $lst
-       (
-       (let* 
-         (
-         ($index (/ (size-atom $lst) 2))
-         ($splitted (split-list $lst $index ()))
-         ($left (car-atom $splitted))
-         ($cdr (cdr-atom $splitted))
-         ($right (car-atom $cdr))
-         )
-       (if (and (== (size-atom $left) 2 )  (== (size-atom $right) 2 )) 
-         ((merge-sort $left $acc) (merge-sort $right $acc))     
-         ;(merge $left $right $acc)
-         (let*
-           (
-            ($merged (merge $left $acc) )
-            ($merged2 (merge $right $acc))
-            ($merged3 (merge (car-atom $merged) (car-atom $merged2)))
-            ($merged4 (merge (index-atom $merged 1) (index-atom $merged2 1)))
-            ($realmerged)
-           )
-           (
+(= (greater-or-equal $list $pivot $acc)
+   (if (== (size-atom $list) 0)
+       $acc
+       (let* (($head (car-atom $list))
+              ($tail (cdr-atom $list)))
+             (if (>= $head $pivot)
+                 (greater-or-equal $tail $pivot (cons-atom $head $acc))
+                 (greater-or-equal $tail $pivot $acc)))))
 
-           )   
-         )
-   )       
-   $acc
-)
-)
-)
-)
+(= (quick-sort $list)
+   (if (== (size-atom $list) 0)
+       ()
+       (let* (($pivot (car-atom $list))
+              ($rest (cdr-atom $list))
+              ($less (less $rest $pivot ()))
+              ($greater-or-equal (greater-or-equal $rest $pivot ()))
+              ($sorted-less (quick-sort $less))
+              ($sorted-greater (quick-sort $greater-or-equal))
+              ($with-pivot (cons-atom $pivot $sorted-greater)))
+             (concatenate $sorted-less $with-pivot))))
 
-!(merge-sort (5 4 3 4) ())
+!(quick-sort (34 53 23 12 34))
