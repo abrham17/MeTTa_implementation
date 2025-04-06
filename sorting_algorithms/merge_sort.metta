@@ -4,8 +4,6 @@
          ($head (car-atom $list))
          ($tail (cdr-atom $list))
          ($newAccum (union-atom $accum ($head)))
-
-
       )
          (split-list $tail (- $index 1) $newAccum)
       )

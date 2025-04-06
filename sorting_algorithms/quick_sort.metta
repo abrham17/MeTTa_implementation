@@ -23,7 +23,6 @@
              (if (>= $head $pivot)
                  (greater-or-equal $tail $pivot (cons-atom $head $acc))
                  (greater-or-equal $tail $pivot $acc)))))
-
 (= (quick-sort $list)
    (if (== (size-atom $list) 0)
        ()
